@@ -1,5 +1,11 @@
 ---
+classes:
+  - yum_utils
+  - nginx
+
 hosts:
   yum-consumer:
     ip: 192.168.35.50
     host_aliases: ['dev.yum-consumer.loc']
+
+bashrc::vagrant_bashrc_path: /modules/bashrc/vagrant.yum-repo.bashrc

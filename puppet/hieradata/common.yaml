@@ -1,3 +1,6 @@
 ---
 classes:
   - hosts
+  - bashrc
+  - repos
+  - common_packages
