@@ -1,0 +1,5 @@
+---
+hosts:
+  yum-consumer:
+    ip: 192.168.35.50
+    host_aliases: ['dev.yum-consumer.loc']

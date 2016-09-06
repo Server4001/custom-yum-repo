@@ -1,0 +1,5 @@
+---
+hosts:
+  yum-repo:
+    ip: 192.168.35.49
+    host_aliases: ['dev.yum-repo.loc']
