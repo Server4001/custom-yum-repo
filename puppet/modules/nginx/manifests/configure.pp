@@ -42,6 +42,15 @@ class nginx::configure {
     notify  => Service['nginx'],
   }
 
+  file { 'admin_htpasswd':
+    path    => '/etc/nginx/conf.d/admin.htpasswd',
+    source  => 'puppet:///modules/nginx/admin.htpasswd',
+    owner   => 'root',
+    group   => 'root',
+    mode    => 0644,
+    require => Package['nginx'],
+  }->
+
   file { 'config_default_host':
     path    => '/etc/nginx/conf.d/default.conf',
     content => template('nginx/default.conf.erb'),
