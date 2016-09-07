@@ -1,6 +1,6 @@
 # yum-repo
 
-## Example of hosting your own Yum repo.
+## Example of hosting your own Yum repo using the Nginx web server.
 
 ### Setup
 
