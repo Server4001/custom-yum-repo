@@ -2,6 +2,7 @@
 classes:
   - yum_utils
   - nginx
+  - createrepo
 
 hosts:
   yum-consumer:
