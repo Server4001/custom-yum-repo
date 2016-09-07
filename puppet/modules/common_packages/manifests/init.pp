@@ -1,5 +1,5 @@
 class common_packages {
-  package { ['vim-enhanced', 'git', 'tree', 'screen']:
+  package { ['man', 'man-pages', 'vim-enhanced', 'git', 'tree', 'screen']:
     ensure => 'installed',
   }
 }

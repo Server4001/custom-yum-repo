@@ -10,4 +10,8 @@ class yum_utils {
   package { 'httpd-tools':
     ensure => 'latest',
   }
+
+  package { 'rpm-build':
+    ensure => 'latest',
+  }
 }
