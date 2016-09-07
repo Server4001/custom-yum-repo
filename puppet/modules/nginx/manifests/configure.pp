@@ -23,7 +23,6 @@ class nginx::configure {
     recurse => true,
     owner   => 'vagrant',
     group   => 'vagrant',
-    mode    => 0755,
     require => File['html_folder'],
   }
 
