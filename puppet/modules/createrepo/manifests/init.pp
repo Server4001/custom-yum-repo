@@ -6,6 +6,6 @@ class createrepo {
     creates => '/var/www/html/packages/repodata/',
     user    => 'vagrant',
     group   => 'vagrant',
-    require => File['nginx rpm'],
+    require => File['packages_folder'],
   }
 }
