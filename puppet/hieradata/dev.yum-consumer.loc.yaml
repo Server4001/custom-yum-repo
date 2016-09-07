@@ -5,3 +5,5 @@ hosts:
     host_aliases: ['dev.yum-repo.loc']
 
 bashrc::vagrant_bashrc_path: /modules/bashrc/vagrant.yum-consumer.bashrc
+
+repos::install_custom_repo: true

@@ -1,4 +1,6 @@
-class repos {
+class repos (
+  $install_custom_repo = false
+) {
   yumrepo { 'epel':
     ensure     => 'present',
     mirrorlist => 'https://mirrors.fedoraproject.org/metalink?repo=epel-6&arch=$basearch',
@@ -13,5 +15,15 @@ class repos {
     descr    => 'nginx repo',
     enabled  => 1,
     gpgcheck => 0,
+  }
+
+  if $install_custom_repo {
+    yumrepo { 'custom_repo':
+      ensure   => 'present',
+      baseurl  => 'http://admin:password@dev.yum-repo.loc/packages',
+      descr    => 'Custom Repo',
+      enabled  => 1,
+      gpgcheck => 0,
+    }
   }
 }
