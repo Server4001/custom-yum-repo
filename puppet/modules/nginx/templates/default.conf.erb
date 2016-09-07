@@ -1,0 +1,29 @@
+server {
+    listen 80;
+    server_name dev.yum-repo.loc localhost;
+
+    client_max_body_size 16M;
+
+    access_log /var/log/www/yum-repo-access.log main;
+    error_log /var/log/www/yum-repo-error.log;
+
+    root /var/www/html;
+
+    location @not_found {
+        return 404;
+    }
+
+    # TODO : Fix issue with /blah returning 301, but /blah/ working fine...
+    # TODO : SEE: http://stackoverflow.com/questions/15555428/nginx-causes-301-redirect-if-theres-no-trailing-slash
+    # TODO : IE: index index.html index.htm; try_files $uri $uri/ =404;
+    location / {
+        # Turn on directory listings.
+        autoindex on;
+
+        # HTTP Basic Auth.
+        auth_basic "auth required";
+        auth_basic_user_file conf.d/admin.htpasswd;
+    }
+
+    try_files $uri $uri/ @not_found;
+}

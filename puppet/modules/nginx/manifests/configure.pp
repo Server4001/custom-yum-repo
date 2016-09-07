@@ -16,6 +16,14 @@ class nginx::configure {
     require => File['www_folder'],
   }
 
+  file { 'log_folder':
+    path   => '/var/log/www',
+    ensure => 'directory',
+    owner  => 'vagrant',
+    group  => 'vagrant',
+    mode   => 0755,
+  }
+
   file { 'fastcgi_params':
     path    => '/etc/nginx/fastcgi_params',
     source  => 'puppet:///modules/nginx/fastcgi_params',
