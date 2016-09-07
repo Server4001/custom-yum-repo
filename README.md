@@ -17,9 +17,3 @@
 
 * SSH into the Yum repo instance via: `vagrant ssh yum-repo`
 * Run the update command: `createrepo --update /var/www/html/packages`
-
-### TODO
-
-* Everything.
-
-
