@@ -16,6 +16,17 @@ class nginx::configure {
     require => File['www_folder'],
   }
 
+  file { 'packages_folder':
+    path    => '/var/www/html/packages',
+    ensure  => 'directory',
+    source  => 'puppet:///modules/nginx/packages/',
+    recurse => true,
+    owner   => 'vagrant',
+    group   => 'vagrant',
+    mode    => 0755,
+    require => File['html_folder'],
+  }
+
   file { 'log_folder':
     path   => '/var/log/www',
     ensure => 'directory',
