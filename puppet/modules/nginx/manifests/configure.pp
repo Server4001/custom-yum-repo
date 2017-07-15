@@ -1,24 +1,24 @@
 class nginx::configure {
   file { 'www_folder':
-    path   => '/var/www',
     ensure => 'directory',
+    path   => '/var/www',
     owner  => 'root',
     group  => 'root',
-    mode   => 0755,
+    mode   => '0755',
   }
 
   file { 'html_folder':
-    path    => '/var/www/html',
     ensure  => 'directory',
+    path    => '/var/www/html',
     owner   => 'vagrant',
     group   => 'vagrant',
-    mode    => 0755,
+    mode    => '0755',
     require => File['www_folder'],
   }
 
   file { 'packages_folder':
-    path    => '/var/www/html/packages',
     ensure  => 'directory',
+    path    => '/var/www/html/packages',
     source  => 'puppet:///modules/nginx/packages/',
     recurse => true,
     owner   => 'vagrant',
@@ -27,11 +27,11 @@ class nginx::configure {
   }
 
   file { 'log_folder':
-    path   => '/var/log/www',
     ensure => 'directory',
+    path   => '/var/log/www',
     owner  => 'vagrant',
     group  => 'vagrant',
-    mode   => 0755,
+    mode   => '0755',
   }
 
   file { 'fastcgi_params':
@@ -39,7 +39,7 @@ class nginx::configure {
     source  => 'puppet:///modules/nginx/fastcgi_params',
     owner   => 'root',
     group   => 'root',
-    mode    => 0644,
+    mode    => '0644',
     notify  => Service['nginx'],
   }
 
@@ -48,7 +48,7 @@ class nginx::configure {
     source  => 'puppet:///modules/nginx/nginx.conf',
     owner   => 'root',
     group   => 'root',
-    mode    => 0644,
+    mode    => '0644',
     notify  => Service['nginx'],
   }
 
@@ -57,7 +57,7 @@ class nginx::configure {
     source  => 'puppet:///modules/nginx/admin.htpasswd',
     owner   => 'root',
     group   => 'root',
-    mode    => 0644,
+    mode    => '0644',
     require => Package['nginx'],
   }->
 
@@ -66,7 +66,7 @@ class nginx::configure {
     content => template('nginx/default.conf.erb'),
     owner   => 'root',
     group   => 'root',
-    mode    => 0644,
+    mode    => '0644',
     notify  => Service['nginx'],
   }
 }
